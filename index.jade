@@ -1,31 +1,7 @@
 //output:index.html
 
-doctype html
-html(lang="de")
-  head
-    title
-    meta(charset="UTF-8")
-    meta(name="viewport" content="width=device-width, initial-scale=1")  
-    link(rel="stylesheet" href="/assets/css/main.min.css")
-  
-  body
-    header
-      #font
-        h1 Autofill
-        p.kicker Finde deine DouQ Partner oder dein Team
-      
-      #navi
-        nav
-          a(href="") Mein Profil
-          a(href="") Team
-          a(href="") Suche
-          a(href="") Nachrichten      
-          
-    block content
-    
-    footer
-      nav
-        a &copy; BestUnknownTeamEUW 2017
-            
-  script(src="/assets/js/jquery-2.1.4.min.js")
-  script(src="/assets/js/functions.js" type="text/javascript")
+
+extends layout.jade
+
+block content
+  h1 
