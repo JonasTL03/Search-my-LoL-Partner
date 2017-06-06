@@ -12,8 +12,8 @@
     </header>
     <nav>
       <ul><a href="/">
-          <li>Was ist Autofill ?</li></a><a href="/register.html">
-          <li>Registrieren</li></a><a href="/login.html">
+          <li>Was ist Autofill ?</li></a><a href="/register.php">
+          <li>Registrieren</li></a><a href="/login.php">
           <li>Anmelden</li></a><a href="/about.html">
           <li>Über</li></a></ul>
       <div class="handle">Menü</div>

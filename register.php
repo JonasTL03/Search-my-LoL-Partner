@@ -1,3 +1,39 @@
+<?php
+
+  $servername = "localhost";
+  $user = "root";
+  $pw = "";
+  $db = "autofill";
+
+  $con = new mysqli($servername, $user, $pw, $db);
+
+  if($con->connect_error) {
+    die("Die Datenbank ist nicht erreichbar. ".$con->connect_error);
+  };
+
+?>
+<?php
+
+  if(isset($_POST['register_submit'])){
+
+    $passwort = md5($_POST['passwort']);
+
+    if($_POST == "Division"){
+      $division = "";
+    }else{
+      $division = $_POST['division'];
+    }
+
+    $sql = "INSERT INTO user (name, ingame_name, email, passwort, liga, division, user_alter) VALUES ('$_POST[name]', '$_POST[ingame_name]', '$_POST[email]', '$passwort', '$_POST[liga]', '$division', '$_POST[user_alter]')";
+
+    if($con->query($sql) === TRUE) {
+      echo "Erfolgreich!";
+    }else{
+      echo "Fehler bei der Registrierung!" .$con->error;
+    }
+
+  }
+?>
 <!DOCTYPE html>
 <html lang="de">
   <head>
@@ -12,8 +48,8 @@
     </header>
     <nav>
       <ul><a href="/">
-          <li>Was ist Autofill ?</li></a><a href="/register.html">
-          <li>Registrieren</li></a><a href="/login.html">
+          <li>Was ist Autofill ?</li></a><a href="/register.php">
+          <li>Registrieren</li></a><a href="/login.php">
           <li>Anmelden</li></a><a href="/about.html">
           <li>Über</li></a></ul>
       <div class="handle">Menü</div>
@@ -21,17 +57,12 @@
     <section>
       <h1>Anmeldung</h1>
       <div id="register_wrapper">
-        <form id="register">
+        <form id="register" method="POST" action="login.php">
           <p>Felder die mit einem <span>*</span> gekennzeichnet sind, sind <span>Pflichtfelder</span>!</p><br>
-          <label>Dein Name</label>
-          <input type="name" name="name" placeholder="Name"><br>
-          <label>Dein Beschwörername:</label>
-          <input type="name" name="summoners_name" placeholder="InGame-Name"><span>*</span><br>
-          <label>Deine E-mail:</label>
-          <input type="email" name="email" placeholder="E-mail"><span>*</span><br>
-          <label>Dein Passwort:</label>
-          <input type="password" name="passwort" placeholder="Passwort"><span>*</span><br>
-          <input type="password" name="passwort" placeholder="Passwort wiederholen"><br>
+          <input type="name" name="name" placeholder="Dein Name"><br>
+          <input type="name" name="ingame_name" placeholder="Dein Beschwörername"><span>*</span><br>
+          <input type="email" name="email" placeholder="Deine E-mail"><span>*</span><br>
+          <input type="password" name="passwort" placeholder="Dein Passwort"><span>*</span><br>
           <label>Dein Rang: 
             <select name="liga">
               <option>Unranked</option>
@@ -52,17 +83,8 @@
               <option>Ⅴ</option>
             </select><span>*</span>
           </label><br>
-          <input type="number" name="alter" placeholder="Dein Alter"><br>
-          <div id="status">
-            <p>Wobei können wir dir behilflich sein?</p>
-            <input type="radio" id="Radio1" name="status" value="Suche_Team">
-            <label for="Radio1" class="radio">Ich suche nach einem Team.</label><br>
-            <input type="radio" id="Radio2" name="status" value="Suche_DouQ">
-            <label for="Radio2" class="radio">Ich suche nach einem DouQ Partner.</label><br>
-            <input type="radio" id="Radio3" name="status" value="Suche_NULL">
-            <label for="Radio3" class="radio">Ich möchte mich erstmal ein wenig umsehen.</label>
-          </div>
-          <input type="submit" value="Registrieren">
+          <input type="number" name="user_alter" placeholder="Dein Alter"><br>
+          <input type="submit" name="register_submit" value="Registrieren">
         </form>
       </div>
     </section>

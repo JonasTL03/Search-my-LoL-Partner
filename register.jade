@@ -1,37 +1,34 @@
-//output:register.html
-
+//output:register.php
 
 extends layout.jade
+
+block php
+  include includes/db.php
+  include includes/register_php.php
 
 block content
   h1 Anmeldung
   #register_wrapper
-    form(id="register")
+    form(id="register" method="POST" action="login.php")
       p Felder die mit einem <span>*</span> gekennzeichnet sind, sind <span>Pflichtfelder</span>!
       br
       
-      label Dein Name
-      input(type="name" name="name" placeholder="Name")
+      input(type="name" name="name" placeholder="Dein Name")
       
       br
       
-      label Dein Beschwörername:
-      input(type="name" name="summoners_name" placeholder="InGame-Name")
+      input(type="name" name="ingame_name" placeholder="Dein Beschwörername")
       span *
       
       br
       
-      label Deine E-mail:
-      input(type="email" name="email" placeholder="E-mail")
+      input(type="email" name="email" placeholder="Deine E-mail")
       span *
       
       br
       
-      label Dein Passwort:
-      input(type="password" name="passwort" placeholder="Passwort")
+      input(type="password" name="passwort" placeholder="Dein Passwort")
       span *
-      br
-      input(type="password" name="passwort" placeholder="Passwort wiederholen")
       
       br
       
@@ -57,19 +54,8 @@ block content
         
       br
         
-      input(type="number" name="alter" placeholder="Dein Alter")
-        
+      input(type="number" name="user_alter" placeholder="Dein Alter")
+      
       br
           
-      div(id="status")
-        p Wobei können wir dir behilflich sein?
-        input(type="radio" id="Radio1" name="status" value="Suche_Team")
-        label(for="Radio1" class="radio") Ich suche nach einem Team.
-        br
-        input(type="radio" id="Radio2" name="status" value="Suche_DouQ")
-        label(for="Radio2" class="radio") Ich suche nach einem DouQ Partner.
-        br
-        input(type="radio" id="Radio3" name="status" value="Suche_NULL")
-        label(for="Radio3" class="radio") Ich möchte mich erstmal ein wenig umsehen.
-          
-      input(type="submit" value="Registrieren")
+      input(type="submit" name="register_submit" value="Registrieren")
