@@ -4,6 +4,9 @@ $( document ).ready(function() {
 
 });
 
+// Animation Menübar
  $('.handle').on('click', function(){
    $('nav ul').toggleClass('showing');
  });
+
+// Register Liga - Division freigeben

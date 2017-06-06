@@ -1,0 +1,75 @@
+//output:register.html
+
+
+extends layout.jade
+
+block content
+  h1 Anmeldung
+  #register_wrapper
+    form(id="register")
+      p Felder die mit einem <span>*</span> gekennzeichnet sind, sind <span>Pflichtfelder</span>!
+      br
+      
+      label Dein Name
+      input(type="name" name="name" placeholder="Name")
+      
+      br
+      
+      label Dein Beschwörername:
+      input(type="name" name="summoners_name" placeholder="InGame-Name")
+      span *
+      
+      br
+      
+      label Deine E-mail:
+      input(type="email" name="email" placeholder="E-mail")
+      span *
+      
+      br
+      
+      label Dein Passwort:
+      input(type="password" name="passwort" placeholder="Passwort")
+      span *
+      br
+      input(type="password" name="passwort" placeholder="Passwort wiederholen")
+      
+      br
+      
+      label Dein Rang: 
+        select(name="liga")
+          option Unranked
+          option Bronze
+          option Silver
+          option Gold
+          option Platin
+          option Diamond
+          option Master
+          option Challenger
+        
+        select(id="division" name="division")
+          option Division
+          option Ⅰ
+          option Ⅱ
+          option Ⅲ
+          option Ⅳ
+          option Ⅴ
+        span *
+        
+      br
+        
+      input(type="number" name="alter" placeholder="Dein Alter")
+        
+      br
+          
+      div(id="status")
+        p Wobei können wir dir behilflich sein?
+        input(type="radio" id="Radio1" name="status" value="Suche_Team")
+        label(for="Radio1" class="radio") Ich suche nach einem Team.
+        br
+        input(type="radio" id="Radio2" name="status" value="Suche_DouQ")
+        label(for="Radio2" class="radio") Ich suche nach einem DouQ Partner.
+        br
+        input(type="radio" id="Radio3" name="status" value="Suche_NULL")
+        label(for="Radio3" class="radio") Ich möchte mich erstmal ein wenig umsehen.
+          
+      input(type="submit" value="Registrieren")
