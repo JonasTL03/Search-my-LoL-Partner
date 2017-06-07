@@ -1,15 +1,36 @@
 //output:login.php
 
+block pre-html-php
+  include includes/db.php
+  <?php
+  |  
+  |    if(isset($_POST['login_submit'])){
+  |      $sql = "SELECT * FROM user WHERE email = '$_POST[email]'";
+  |  
+  |      $res = $con->query($sql);
+  |      if($res->num_rows > 0) {
+  |        while($i = $res->fetch_assoc()) {
+  |          if($i['passwort'] == hash("sha512", $_POST['passwort'])){
+  |            $_SESSION["id"] = $i['id'];
+  |            echo "TEST";
+  |            header("Location: schaumparty/meinProfil.php");
+  |          }
+  |        }
+  |      }
+  |    }
+  |  
+  ?>
+
 
 extends layout.jade
 
 block content
-  form(id="login")
+  form(id="login" method="POST")
     h1 Anmeldung
-    input(type="email" placeholder="E-mail")
+    input(type="email" name="email" placeholder="E-mail")
     br
     
-    input(type="passwort" placeholder="Passwort")
+    input(type="password" name="passwort" placeholder="Passwort")
     br
     
-    input(type="submit" value="Anmelden")
+    input.button(type="submit" name="login_submit" value="Anmelden")

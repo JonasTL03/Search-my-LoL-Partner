@@ -16,9 +16,11 @@
 
   if(isset($_POST['register_submit'])){
 
-    $passwort = md5($_POST['passwort']);
+    // Passwort Hash
+    $passwort = hash("sha512", $_POST['passwort']);
 
-    if($_POST == "Division"){
+
+    if($_POST['division'] == "Division"){
       $division = "";
     }else{
       $division = $_POST['division'];
@@ -27,11 +29,10 @@
     $sql = "INSERT INTO user (name, ingame_name, email, passwort, liga, division, user_alter) VALUES ('$_POST[name]', '$_POST[ingame_name]', '$_POST[email]', '$passwort', '$_POST[liga]', '$division', '$_POST[user_alter]')";
 
     if($con->query($sql) === TRUE) {
-      echo "Erfolgreich!";
     }else{
       echo "Fehler bei der Registrierung!" .$con->error;
     }
-
+    echo "OK";
   }
 ?>
 <!DOCTYPE html>
@@ -57,7 +58,7 @@
     <section>
       <h1>Anmeldung</h1>
       <div id="register_wrapper">
-        <form id="register" method="POST" action="login.php">
+        <form id="register" method="POST" action="">
           <p>Felder die mit einem <span>*</span> gekennzeichnet sind, sind <span>Pflichtfelder</span>!</p><br>
           <input type="name" name="name" placeholder="Dein Name"><br>
           <input type="name" name="ingame_name" placeholder="Dein Beschwörername"><span>*</span><br>
@@ -76,11 +77,11 @@
             </select>
             <select id="division" name="division">
               <option>Division</option>
-              <option>Ⅰ</option>
-              <option>Ⅱ</option>
-              <option>Ⅲ</option>
-              <option>Ⅳ</option>
-              <option>Ⅴ</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
             </select><span>*</span>
           </label><br>
           <input type="number" name="user_alter" placeholder="Dein Alter"><br>

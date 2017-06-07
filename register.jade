@@ -2,14 +2,14 @@
 
 extends layout.jade
 
-block php
+block pre-html-php
   include includes/db.php
   include includes/register_php.php
 
 block content
   h1 Anmeldung
   #register_wrapper
-    form(id="register" method="POST" action="login.php")
+    form(id="register" method="POST" action="")
       p Felder die mit einem <span>*</span> gekennzeichnet sind, sind <span>Pflichtfelder</span>!
       br
       
@@ -45,11 +45,11 @@ block content
         
         select(id="division" name="division")
           option Division
-          option Ⅰ
-          option Ⅱ
-          option Ⅲ
-          option Ⅳ
-          option Ⅴ
+          option 1
+          option 2
+          option 3
+          option 4
+          option 5
         span *
         
       br

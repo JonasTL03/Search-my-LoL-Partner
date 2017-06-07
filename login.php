@@ -1,4 +1,41 @@
-<!DOCTYPE html>
+
+<?php 
+session_start();
+if(isset($_SESSION['id'])) {
+  header("Location: /schaumparty/meinProfil.php");
+}
+?><?php
+
+  $servername = "localhost";
+  $user = "root";
+  $pw = "";
+  $db = "autofill";
+
+  $con = new mysqli($servername, $user, $pw, $db);
+
+  if($con->connect_error) {
+    die("Die Datenbank ist nicht erreichbar. ".$con->connect_error);
+  };
+
+?>
+<?php
+ 
+   if(isset($_POST['login_submit'])){
+     $sql = "SELECT * FROM user WHERE email = '$_POST[email]'";
+ 
+     $res = $con->query($sql);
+     if($res->num_rows > 0) {
+       while($i = $res->fetch_assoc()) {
+         if($i['passwort'] == hash("sha512", $_POST['passwort'])){
+           $_SESSION["id"] = $i['id'];
+           echo "TEST";
+           header("Location: schaumparty/meinProfil.php");
+         }
+       }
+     }
+   }
+ 
+?><!DOCTYPE html>
 <html lang="de">
   <head>
     <title>Autofill</title>
@@ -19,11 +56,11 @@
       <div class="handle">Menü</div>
     </nav>
     <section>
-      <form id="login">
+      <form id="login" method="POST">
         <h1>Anmeldung</h1>
-        <input type="email" placeholder="E-mail"><br>
-        <input type="passwort" placeholder="Passwort"><br>
-        <input type="submit" value="Anmelden">
+        <input type="email" name="email" placeholder="E-mail"><br>
+        <input type="password" name="passwort" placeholder="Passwort"><br>
+        <input type="submit" name="login_submit" value="Anmelden" class="button">
       </form>
     </section>
     <footer>

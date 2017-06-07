@@ -1,11 +1,12 @@
+//output:meinProfil.php
+
 <?php 
 | session_start();
-| if(isset($_SESSION['id'])) {
-|   header("Location: /schaumparty/meinProfil.php");
+| if($_SESSION['id'] == "") {
+|   header("Location: /login.php");
 | }
 ?>
 
-block pre-html-php
 
 doctype html
 html(lang="de")
@@ -20,10 +21,10 @@ html(lang="de")
       h1 Autofill
     nav
       ul
-        a(href="/")
-          li Was ist Autofill ?
+        a(href="/schaumparty/meinProfil.php")
+          li Mein Profil
           
-        a(href="/register.php")
+        a(href="/schaumparty/suche.php")
           li Registrieren
           
         a(href="/login.php")
@@ -45,5 +46,3 @@ html(lang="de")
       
   script(src="/assets/js/jquery-2.1.4.min.js")
   script(src="/assets/js/functions.js" type="text/javascript")
-  
-block after-html-php

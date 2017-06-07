@@ -2,9 +2,11 @@
 
   if(isset($_POST['register_submit'])){
 
-    $passwort = md5($_POST['passwort']);
+    // Passwort Hash
+    $passwort = hash("sha512", $_POST['passwort']);
 
-    if($_POST == "Division"){
+
+    if($_POST['division'] == "Division"){
       $division = "";
     }else{
       $division = $_POST['division'];
@@ -16,6 +18,6 @@
     }else{
       echo "Fehler bei der Registrierung!" .$con->error;
     }
-
+    echo "OK";
   }
 ?>
