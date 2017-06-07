@@ -48,10 +48,10 @@ if(isset($_SESSION['id'])) {
       <h1>Autofill</h1>
     </header>
     <nav>
-      <ul><a href="/">
+      <ul><a href="/index.php">
           <li>Was ist Autofill ?</li></a><a href="/register.php">
           <li>Registrieren</li></a><a href="/login.php">
-          <li>Anmelden</li></a><a href="/about.html">
+          <li>Anmelden</li></a><a href="/about.php">
           <li>Über</li></a></ul>
       <div class="handle">Menü</div>
     </nav>

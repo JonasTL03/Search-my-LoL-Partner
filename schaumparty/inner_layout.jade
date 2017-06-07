@@ -1,5 +1,3 @@
-//output:meinProfil.php
-
 <?php 
 | session_start();
 | if($_SESSION['id'] == "") {
@@ -25,13 +23,16 @@ html(lang="de")
           li Mein Profil
           
         a(href="/schaumparty/suche.php")
-          li Registrieren
+          li Suche
           
-        a(href="/login.php")
-          li Anmelden
+        a(href="/schaumparty/nachrichten.php")
+          li Nachrichten
         
-        a(href="/about.html")
-          li Über
+        a(href="/schaumparty/team.php")
+          li Team
+          
+        a(href="/schaumparty/logout.php")
+          li Logout
           
       .handle Menü
     

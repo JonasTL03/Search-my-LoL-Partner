@@ -26,7 +26,6 @@ if($_SESSION['id'] == "") {
       <div class="handle">Menü</div>
     </nav>
     <section>
-      <h1>Mein Profil</h1>
     </section>
     <footer>
       <nav><a href="#">&copy; Papa Jonas</a><a>|</a><a href="#">Impressum</a></nav>

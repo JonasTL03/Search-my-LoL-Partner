@@ -1,4 +1,10 @@
-<!DOCTYPE html>
+
+<?php 
+session_start();
+if(isset($_SESSION['id'])) {
+  header("Location: /schaumparty/meinProfil.php");
+}
+?><!DOCTYPE html>
 <html lang="de">
   <head>
     <title>Autofill</title>
@@ -11,15 +17,16 @@
       <h1>Autofill</h1>
     </header>
     <nav>
-      <ul><a href="/">
+      <ul><a href="/index.php">
           <li>Was ist Autofill ?</li></a><a href="/register.php">
           <li>Registrieren</li></a><a href="/login.php">
-          <li>Anmelden</li></a><a href="/about.html">
+          <li>Anmelden</li></a><a href="/about.php">
           <li>Über</li></a></ul>
       <div class="handle">Menü</div>
     </nav>
     <section>
-      <h2>Hier entsteht die "Über" Seite von Autofill</h2>
+      <h2>Was ist Autofill ?</h2>
+      <p>Autofill ist eine Webseite auf der du bequem Leute zum zocken finden kannst !</p>
     </section>
     <footer>
       <nav><a href="#">&copy; Papa Jonas</a><a>|</a><a href="#">Impressum</a></nav>
